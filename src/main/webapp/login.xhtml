@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+            <div style="margin-left: 40%" class="ui-g-2">
+                <p:panel header="Practica 9">
+
+                    <h:panelGrid  columns="1" cellpadding="4">
+                        <h:outputText value="Usuario: " />
+                        <p:inputText value="#{loginBean.usuario}" />
+
+                        <h:outputText value="Contraseña: " />
+                        <p:inputText value="#{loginBean.contrasena}" />
+                        <p:messages style="font-size: 14px" id="messages" showDetail="true" autoUpdate="true" showIcon="false" closable="true" />
+
+                        <p:commandButton  value="Entrar" actionListener="#{loginBean.login}" />
+                    </h:panelGrid>
+
+                    <h:commandLink action="registro" >Registrarse</h:commandLink>
+                </p:panel>
+            </div>
+
+        </div>
+
+
+
+    </h:form>
+</h:body>
+</html>

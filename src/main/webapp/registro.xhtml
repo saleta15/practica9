@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+    <h:outputStylesheet name="custom.css" library="css" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+            <div style="margin-left: 35%" class="ui-g-3">
+                <p:panel header="Registro de Usuario">
+
+                    <h:panelGrid >
+                        <h:outputText styleClass="campo-registro" value="Usuario: " />
+                        <p:inputText  style="margin-left: 40%" value="#{registroBean.nuevoUsuario.nombreUsuario}" />
+                        <br/>
+
+                        <h:outputText styleClass="campo-registro" value="Contraseña: " />
+                        <p:password style="margin-left: 40%" value="#{registroBean.nuevoUsuario.contrasena}" />
+                        <br/>
+
+                        <h:outputText styleClass="campo-registro" value="Nombre: " />
+                        <p:inputText style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.nombre}" />
+                        <br/>
+
+                        <h:outputText styleClass="campo-registro" value="Apellido: " />
+                        <p:inputText style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.apellido}" />
+                        <br/>
+
+                        <p:commandButton  style="margin-left: 60%" actionListener="#{registroBean.registrarUsuario}" action="login" ajax="false" value="Registrar" />
+
+
+                    </h:panelGrid>
+
+                </p:panel>
+            </div>
+
+        </div>
+
+
+
+    </h:form>
+</h:body>
+</html>
