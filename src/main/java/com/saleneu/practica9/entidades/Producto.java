@@ -15,6 +15,15 @@ public class Producto implements Serializable {
     private int cantidad;
     private String nombre;
     private String descripcion;
+    private Double precio;
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
     public Producto(int cantidad, String nombre, String descripcion) {
         this.cantidad = cantidad;

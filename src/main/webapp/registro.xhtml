@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
 
 <h:head>
     <title>Practica 9</title>
@@ -15,26 +17,33 @@
     <h:form>
         <div class="ui-g">
             <div style="margin-left: 35%" class="ui-g-3">
-                <p:panel header="Registro de Usuario">
+                <p:panel id="formulario" header="Registro de Usuario">
 
-                    <h:panelGrid >
+                    <h:panelGrid  >
                         <h:outputText styleClass="campo-registro" value="Usuario: " />
-                        <p:inputText  style="margin-left: 40%" value="#{registroBean.nuevoUsuario.nombreUsuario}" />
+                        <p:inputText id="nombre-usuario"  style="margin-left: 40%" value="#{registroBean.nuevoUsuario.nombreUsuario}" required="true" requiredMessage="Este campo es requerido" >
+                            <f:validator validatorId="miValidadorUsuario" />
+
+                        </p:inputText>
+                        <p:message style="margin-left: 40%; width: 215px" for="nombre-usuario"/>
                         <br/>
 
                         <h:outputText styleClass="campo-registro" value="Contraseña: " />
-                        <p:password style="margin-left: 40%" value="#{registroBean.nuevoUsuario.contrasena}" />
+                        <p:password id="contrasena" style="margin-left: 40%" value="#{registroBean.nuevoUsuario.contrasena}" required="true" requiredMessage="Este campo es requerido" />
+                        <p:message style="margin-left: 40%; width: 215px" for="contrasena"/>
                         <br/>
 
-                        <h:outputText styleClass="campo-registro" value="Nombre: " />
-                        <p:inputText style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.nombre}" />
+                        <h:outputText  styleClass="campo-registro" value="Nombre: "  />
+                        <p:inputText id="nombre" style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.nombre}" required="true" requiredMessage="Este campo es requerido" />
+                        <p:message style="margin-left: 40%; width: 215px" for="nombre"/>
                         <br/>
 
-                        <h:outputText styleClass="campo-registro" value="Apellido: " />
-                        <p:inputText style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.apellido}" />
+                        <h:outputText  styleClass="campo-registro" value="Apellido: "  />
+                        <p:inputText id="apellido" style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.apellido}" required="true" requiredMessage="Este campo es requerido" />
+                        <p:message style="margin-left: 40%; width: 215px" for="apellido"/>
                         <br/>
 
-                        <p:commandButton  style="margin-left: 60%" actionListener="#{registroBean.registrarUsuario}" action="login" ajax="false" value="Registrar" />
+                        <p:commandButton  style="margin-left: 60%" actionListener="#{registroBean.registrarUsuario}" update="formulario" action="login"  value="Registrar" />
 
 
                     </h:panelGrid>

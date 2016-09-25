@@ -34,6 +34,18 @@ public class UsuarioServices extends GestionDb<Usuario> {
         return lista.size() > 0;
     }
 
+    public boolean usuarioExiste(String usuario){
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select e from Usuario e where e.nombreUsuario = :usuario");
+        query.setParameter("usuario", usuario);
+        List<Usuario> lista = query.getResultList();
+        if (lista.size() < 1)
+            return false;
+        else{
+            return true;
+        }
+    }
+
     public boolean registroValido(String usuario, String contrasena){
         EntityManager em = getEntityManager();
         Query query = em.createQuery("select e from Usuario e where e.nombreUsuario = :usuario");

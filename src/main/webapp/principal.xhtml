@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>Practica 9</title>
@@ -10,31 +10,49 @@
 </h:head>
 
 <h:body>
-
     <h:form>
         <div class="ui-g">
-            <div style="margin-left: 40%" class="ui-g-2">
-                <p:panel header="PRINCIPAL">
+            <div class="ui-g-2">
+                <p:menu>
+                    <p:submenu label="Productos">
+                        <p:menuitem value="Nuevo producto" outcome="producto"   icon="ui-icon-disk" />
+                    </p:submenu>
 
-                    <h:panelGrid  columns="1" cellpadding="4">
-                        <h:outputText value="Usuario: " />
-                        <p:inputText value="#{loginBean.usuario}" />
-
-                        <h:outputText value="Contraseña: " />
-                        <p:inputText value="#{loginBean.contrasena}" />
-                        <p:messages style="font-size: 14px" id="messages" showDetail="true" autoUpdate="true" showIcon="false" closable="true" />
-
-                        <p:commandButton  value="Entrar" actionListener="#{loginBean.login}" />
-                    </h:panelGrid>
-
-                    <h:commandLink action="registro" >Registrarse</h:commandLink>
-                </p:panel>
+                </p:menu>
             </div>
+            <div class="ui-g-10">
+                <h:form>
+                    <p:fieldset legend="Productos">
+                        <p:dataTable  var="car" value="#{principalBean.lazyModel}" paginator="true" rows="10"
+                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                      rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{principalBean.player}" id="carTable" lazy="true">
 
+                            <p:column headerText="Nombre" filterBy="#{car.nombre}" >
+                                <h:outputText value="#{car.nombre}" />
+                            </p:column>
+                            <p:column headerText="Precio" >
+                                <h:outputText value="#{car.precio}" />
+                            </p:column>
+                            <p:column headerText="Disponibilidad" >
+                                <h:outputText value="#{car.cantidad}" />
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:fieldset>
+
+
+
+
+                </h:form>
+            </div>
         </div>
 
 
 
     </h:form>
+
+
+
 </h:body>
 </html>
