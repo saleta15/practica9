@@ -2,6 +2,7 @@ package com.saleneu.practica9.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
@@ -14,6 +15,29 @@ public class Venta implements Serializable {
     @OneToOne
     private Usuario usuario;
     private int cantidad;
+    private int precio;
+    private Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
     @Transient
     private int totalVendido;
 

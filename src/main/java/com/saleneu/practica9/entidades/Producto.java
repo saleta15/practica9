@@ -11,8 +11,9 @@ import java.io.Serializable;
 public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int cantidad;
+    private Integer id =0;
+
+    private Integer cantidad;
     private String nombre;
     private String descripcion;
     private Double precio;
@@ -25,7 +26,7 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    public Producto(int cantidad, String nombre, String descripcion) {
+    public Producto(Integer cantidad, String nombre, String descripcion) {
         this.cantidad = cantidad;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -38,11 +39,11 @@ public class Producto implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 

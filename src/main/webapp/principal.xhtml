@@ -23,21 +23,24 @@
             <div class="ui-g-10">
                 <h:form>
                     <p:fieldset legend="Productos">
-                        <p:dataTable  var="car" value="#{principalBean.lazyModel}" paginator="true" rows="10"
-                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                      rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{principalBean.player}" id="carTable" lazy="true">
+                        <p:dataTable var="producto" value="#{principalBean.lazyModel}" paginator="true" rows="10"
+                                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                     rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{principalBean.player}" id="carTable" lazy="true">
                             <p:ajax event="rowSelect" listener="#{vistaProductoBean.onRowSelect}" >
                                 <f:param name="action" value="delete" />
                             </p:ajax>
 
-                            <p:column headerText="Nombre" filterBy="#{car.nombre}" >
-                                <h:outputText value="#{car.nombre}" />
+                            <p:column headerText="Nombre" filterBy="#{producto.nombre}" >
+                                <h:outputText value="#{producto.nombre}" />
                             </p:column>
                             <p:column headerText="Precio" >
-                                <h:outputText value="#{car.precio}" />
+                                <h:outputText value="#{producto.precio}" />
                             </p:column>
                             <p:column headerText="Disponibilidad" >
-                                <h:outputText value="#{car.cantidad}" />
+                                <h:outputText value="#{producto.cantidad}" />
+                            </p:column>
+                            <p:column headerText="Disponibilidad" >
+                               <p:commandButton ajax="false" value="Ver Historial" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
                             </p:column>
 
                         </p:dataTable>

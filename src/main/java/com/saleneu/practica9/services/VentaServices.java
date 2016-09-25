@@ -1,7 +1,13 @@
 package com.saleneu.practica9.services;
 
 
+import com.saleneu.practica9.entidades.Producto;
+import com.saleneu.practica9.entidades.Usuario;
 import com.saleneu.practica9.entidades.Venta;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  *
@@ -22,12 +28,15 @@ public class VentaServices extends GestionDb<Venta> {
         return instancia;
     }
 
-    /**
-     *
-     * @param nombre
-     * @return
-     */
 
+    public List<Venta> historialVentas(int id){
+        EntityManager em = getEntityManager();
+        Producto p = ProductoServices.getInstancia().find(id);
+        Query query = em.createQuery("select e from Venta e where e.producto = :id");
+        query.setParameter("id", p);
+        List<Venta> lista = query.getResultList();
+       return lista;
+    }
 
 
 }
