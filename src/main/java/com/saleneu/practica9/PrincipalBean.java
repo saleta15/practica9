@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class PrincipalBean {
 
     private String usuario;

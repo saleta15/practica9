@@ -95,6 +95,10 @@ public class ProductoBean {
 
     }
 
+    public void onRowSelect(Producto producto){
+
+    }
+
 
 
 }

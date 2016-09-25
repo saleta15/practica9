@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+    <h:outputStylesheet name="custom.css" library="css" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+            <div style="margin-left: 35%" class="ui-g-4">
+                <p:panel id="formulario" header="Producto">
+
+                    <h:panelGrid >
+
+                        <h:outputText  value="Nombre: " />
+                        <p:inputText id="nombre" style="width: 371px"   value="#{vistaProductoBean.producto.nombre}" required="true" requiredMessage="Es requerido." />
+                        <p:message for="nombre"/>
+                        <br/>
+
+
+                        <h:outputText  value="Descripcion: " />
+                        <p:inputText id="descripcion"  style="width: 371px" value="#{productoBean.nuevoProducto.descripcion}" required="true" requiredMessage="Es requerido." />
+                        <p:message for="descripcion"/>
+                        <br/>
+
+                        <h:outputText  value="Precio: " />
+                        <p:inputNumber   id="precio" value="#{productoBean.nuevoProducto.precio}" required="true" requiredMessage="Es requerido."/>
+                        <p:message for="precio"/>
+                        <br/>
+
+                        <h:outputText  value="Existencia: " />
+                        <p:spinner  id="cantidad"  value="#{productoBean.nuevoProducto.cantidad}" required="true" requiredMessage="Es requerido." />
+                        <p:message for="cantidad"/>
+
+                        <h:outputText  value="Fotos: " />
+                        <p:fileUpload fileUploadListener="#{productoBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                      multiple="true"  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+
+                        <br></br>
+                        <p:commandButton  style="margin-left: 450px"  actionListener="#{productoBean.registrarProducto}" action="principal"  value="Registrar" update="formulario" />
+
+
+                    </h:panelGrid>
+
+                </p:panel>
+            </div>
+
+        </div>
+
+
+
+    </h:form>
+</h:body>
+</html>

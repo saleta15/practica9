@@ -17,7 +17,7 @@ public class ProductoLazyList extends LazyDataModel<Producto> {
 
 
     private List<Producto> productos;
-
+    private Producto productoSeleccionado;
     public ProductoLazyList(List<Producto> productos){
         this.productos = productos;
         if(getRowCount() <= 0){
