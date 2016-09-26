@@ -17,38 +17,29 @@
     <h:form>
         <div class="ui-g">
             <div style="margin-left: 35%" class="ui-g-4">
-                <p:panel id="formulario" header="Producto">
+                <p:panel id="formulario" header="Historial de Ventas">
 
                     <h:panelGrid >
 
-                        <h:outputText  value="Nombre: " />
-                        <p:inputText id="nombre" style="width: 371px"   value="#{historialVentasBean.ventas.get(0).fecha}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="nombre"/>
-                        <br/>
-
-
-                        <h:outputText  value="Descripcion: " />
-                        <p:inputText id="descripcion"  style="width: 371px" value="#{productoBean.nuevoProducto.descripcion}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="descripcion"/>
-                        <br/>
-
-                        <h:outputText  value="Precio: " />
-                        <p:inputNumber   id="precio" value="#{productoBean.nuevoProducto.precio}" required="true" requiredMessage="Es requerido."/>
-                        <p:message for="precio"/>
-                        <br/>
-
-                        <h:outputText  value="Existencia: " />
-                        <p:spinner  id="cantidad"  value="#{productoBean.nuevoProducto.cantidad}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="cantidad"/>
-
-                        <h:outputText  value="Fotos: " />
-                        <p:fileUpload fileUploadListener="#{productoBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                      multiple="true"  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-
                         <br></br>
-                        <p:commandButton  style="margin-left: 450px"  actionListener="#{productoBean.registrarProducto}" action="principal"  value="Registrar" update="formulario" />
 
+                        <p:dataTable var="venta" value="#{historialVentasBean.ventas}">
+                            <p:column headerText="Usuario">
+                                <h:outputText value="#{venta.usuario.nombreUsuario}" />
+                            </p:column>
+
+                            <p:column headerText="Fecha venta">
+                                <h:outputText value="#{venta.fecha}" />
+                            </p:column>
+
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{venta.cantidad}" />
+                            </p:column>
+
+                            <p:column headerText="Total vendido">
+                                <h:outputText value="#{venta.precio * venta.cantidad}" />
+                            </p:column>
+                        </p:dataTable>
 
                     </h:panelGrid>
 
