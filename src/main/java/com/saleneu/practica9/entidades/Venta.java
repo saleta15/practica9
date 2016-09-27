@@ -2,6 +2,7 @@ package com.saleneu.practica9.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -18,8 +19,10 @@ public class Venta implements Serializable {
     private int precio;
     private Date fecha;
 
-    public Date getFecha() {
-        return fecha;
+    public String getFecha() {
+
+        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+        return formateador.format(fecha);
     }
 
     public void setFecha(Date fecha) {
