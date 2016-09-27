@@ -43,6 +43,8 @@ public class ProductoServices extends GestionDb<Producto> {
         return fooList;
     }
 
+
+
     public  long cantidadProductos(){
         Query query = getEntityManager().createQuery("select count (e.id)from Producto e ");
 

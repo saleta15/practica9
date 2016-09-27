@@ -82,7 +82,7 @@ public class ProductoBean {
 
         String filename = nuevoProducto.getId()+"_"+ i;
         String extension = FilenameUtils.getExtension(archivoSubido.getFileName());
-        Path file = Files.createTempFile(folder,archivoSubido.getFileName(),extension);
+        Path file = Files.createTempFile(folder,archivoSubido.getFileName(), "." + extension);
 
         FacesContext.getCurrentInstance().addMessage(null, message);
         Files.copy(input, file, StandardCopyOption.REPLACE_EXISTING);
@@ -95,9 +95,7 @@ public class ProductoBean {
 
     }
 
-    public void onRowSelect(Producto producto){
 
-    }
 
 
 

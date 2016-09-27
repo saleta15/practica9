@@ -1,5 +1,7 @@
 package com.saleneu.practica9;
 
+import com.saleneu.practica9.entidades.Imagen;
+import com.saleneu.practica9.services.ImagenServices;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -19,8 +21,6 @@ import java.nio.file.Paths;
 @ApplicationScoped
 public class Images {
 
-
-
     public StreamedContent getImage() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -31,7 +31,8 @@ public class Images {
         else {
             // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
             String id = context.getExternalContext().getRequestParameterMap().get("id");
-            File file = new File("/var/webapp/images/Untitled-8324086382069079759.png");
+            Imagen imagen = ImagenServices.getInstancia().find(Integer.parseInt(id));
+            File file = new File(imagen.getRuta());
 
             return new DefaultStreamedContent(new FileInputStream(file));
         }

@@ -18,6 +18,14 @@ public class Producto implements Serializable {
     private String descripcion;
     private Double precio;
 
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public Double getPrecio() {
         return precio;
     }
@@ -43,13 +51,9 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+
+
 
     public String getNombre() {
         return nombre;

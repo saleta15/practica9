@@ -49,6 +49,9 @@ public class LoginBean {
         }
         else{
             try {
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+                session.setAttribute("usuario", UsuarioServices.getInstancia().find(usuario));
                 FacesContext.getCurrentInstance().getExternalContext().redirect("principal.xhtml");
             } catch (IOException e) {
                 e.printStackTrace();

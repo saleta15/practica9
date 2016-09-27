@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 
 <h:head>
@@ -12,53 +13,69 @@
     <h:outputStylesheet name="custom.css" library="css" />
 </h:head>
 
+
 <h:body>
+    <div class="ui-g">
+    <div style="margin-left: 25%" class="ui-g-6">
+    <p:panel id="formulario" header="Producto">
+        <p:galleria style="margin-left: 23%" value="#{vistaProductoBean.imagenes}" var="imagen" panelWidth="450" panelHeight="300" showCaption="true">
+            <p:graphicImage style="width: 450px; height: 300px;" alt="" value="#{images.image}" title="#{vistaProductoBean.producto.nombre}">
+                <f:param name="id" value="#{imagen.id}" />
+            </p:graphicImage>
+        </p:galleria>
+        <p:panelGrid style="margin-left: 22%; width: 50%" columns="2">
+            <f:facet name="header">
+                Informacion
+            </f:facet>
 
-    <h:form>
-        <div class="ui-g">
-            <div style="margin-left: 35%" class="ui-g-4">
-                <p:panel id="formulario" header="Producto">
+            <h:outputText value="Nombre:" />
+            <h:outputText value="#{vistaProductoBean.producto.nombre}" />
 
-                    <h:panelGrid >
+            <h:outputText value="Descripcion:" />
+            <h:outputText value="#{vistaProductoBean.producto.descripcion}" />
 
-                        <h:outputText  value="Nombre: " />
-                        <p:inputText id="nombre" style="width: 371px"   value="#{vistaProductoBean.producto.nombre}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="nombre"/>
-                        <br/>
+            <h:outputText value="Precio:" />
+            <h:outputText value="$#{vistaProductoBean.producto.precio}" />
 
+            <h:outputText value="Existencia:" />
+            <h:outputText value="#{vistaProductoBean.producto.cantidad}" />
+        </p:panelGrid>
+    <h:panelGrid >
+            </h:panelGrid>
+    </p:panel>
+    </div>
+    </div>
 
-                        <h:outputText  value="Descripcion: " />
-                        <p:inputText id="descripcion"  style="width: 371px" value="#{productoBean.nuevoProducto.descripcion}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="descripcion"/>
-                        <br/>
+    <div class="ui-g">
+        <div style="margin-left: 25%" class="ui-g-6">
+            <h:form>
+                <p:panel id="formulario2" header="Comentarios">
+                    <p:fieldset legend="" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText  value="Valoracion: " /><br/>
+                            <p:rating value="#{vistaProductoBean.comentario.rating}" />
+                            <br></br>
+                            <h:outputText  value="Comentario: " /><br/>
+                            <p:inputTextarea id="comentario" rows="4" cols="100" value="#{vistaProductoBean.comentario.mensaje}"/><br/>
+                            <p:message for="comentario"/><br/>
+                            <p:commandButton actionListener="#{vistaProductoBean.dejarComentario}" value="Comentar" update="formulario2"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+                    <ui:repeat value="#{vistaProductoBean.comentarios}" var="comentario">
+                        <p:fieldset legend="#{comentario.usuario.nombre}" style="margin-bottom:20px">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:rating value="#{comentario.rating}" />
+                                <h:outputText
+                                        value="#{comentario.mensaje}" />
+                            </h:panelGrid>
+                        </p:fieldset>
 
-                        <h:outputText  value="Precio: " />
-                        <p:inputNumber   id="precio" value="#{productoBean.nuevoProducto.precio}" required="true" requiredMessage="Es requerido."/>
-                        <p:message for="precio"/>
-                        <br/>
-
-                        <h:outputText  value="Existencia: " />
-                        <p:spinner  id="cantidad"  value="#{productoBean.nuevoProducto.cantidad}" required="true" requiredMessage="Es requerido." />
-                        <p:message for="cantidad"/>
-
-                        <h:outputText  value="Fotos: " />
-                        <p:fileUpload fileUploadListener="#{productoBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                      multiple="true"  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-
-
-                        <br></br>
-                        <p:commandButton  style="margin-left: 450px"  actionListener="#{productoBean.registrarProducto}" action="principal"  value="Registrar" update="formulario" />
-
-
-                    </h:panelGrid>
-
+                    </ui:repeat>
                 </p:panel>
-            </div>
-
+            </h:form>
         </div>
+    </div>
 
 
-
-    </h:form>
 </h:body>
 </html>
