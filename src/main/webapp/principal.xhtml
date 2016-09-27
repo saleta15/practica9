@@ -39,8 +39,9 @@
                             <p:column headerText="Disponibilidad" >
                                 <h:outputText value="#{producto.cantidad}" />
                             </p:column>
-                            <p:column headerText="Disponibilidad" >
-                               <p:commandButton ajax="false" value="Ver Historial" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
+                            <p:column headerText="Otros" >
+                                <p:commandButton ajax="false"  style=" left:70%" value="Comprar" action="#{facturaCompraBean.facturaVentas(producto.id)}"/>
+                               <p:commandButton ajax="false" style=" right:30%" value="Ver Historial" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
                             </p:column>
 
                         </p:dataTable>
