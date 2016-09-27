@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+            <div style="margin-left: 40%" class="ui-g-2">
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{facturaCompraBean.producto.nombre}" />
+
+                    <h:outputText value="Precio:" />
+                    <h:outputText value="#{facturaCompraBean.producto.precio}" />
+
+                    <h:outputText value="Descripcion:" />
+                    <h:outputText value="#{facturaCompraBean.producto.descripcion}" />
+
+                    <h:outputText value="Cantidad:" />
+                    <p:inputNumber id="cantidad" value="#{facturaCompraBean.cantidad}" >
+                        <f:attribute name="producto" value="#{facturaCompraBean.producto.id}" />
+                        <f:validator validatorId="miValidadorDisponibilidad" />
+                    </p:inputNumber>
+                    <p:message style="margin-left: 113%; width: 170px" for="cantidad"/>
+                    <p:commandButton ajax="false" style=" right:100%"  value="Agregar al Carrito" action="#{facturaCompraBean.facturaVentas(producto.id)}"/>
+
+                </p:panelGrid>
+
+            </div>
+
+        </div>
+
+
+
+    </h:form>
+</h:body>
+</html>
