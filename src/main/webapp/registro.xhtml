@@ -17,10 +17,10 @@
     <h:form>
         <div class="ui-g">
             <div style="margin-left: 35%" class="ui-g-3">
-                <p:panel id="formulario" header="Registro de Usuario">
+                <p:panel id="formulario" header="#{mensaje.registrar}">
 
                     <h:panelGrid  >
-                        <h:outputText styleClass="campo-registro" value="Usuario: " />
+                        <h:outputText styleClass="campo-registro" value="#{mensaje.usuario}" />
                         <p:inputText id="nombre-usuario"  style="margin-left: 40%" value="#{registroBean.nuevoUsuario.nombreUsuario}" required="true" requiredMessage="Este campo es requerido" >
                             <f:validator validatorId="miValidadorUsuario" />
 
@@ -28,22 +28,22 @@
                         <p:message style="margin-left: 40%; width: 215px" for="nombre-usuario"/>
                         <br/>
 
-                        <h:outputText styleClass="campo-registro" value="Contraseña: " />
+                        <h:outputText styleClass="campo-registro" value="#{mensaje.contrasena}" />
                         <p:password id="contrasena" style="margin-left: 40%" value="#{registroBean.nuevoUsuario.contrasena}" required="true" requiredMessage="Este campo es requerido" />
                         <p:message style="margin-left: 40%; width: 215px" for="contrasena"/>
                         <br/>
 
-                        <h:outputText  styleClass="campo-registro" value="Nombre: "  />
+                        <h:outputText  styleClass="campo-registro" value="#{mensaje.nombre}: "  />
                         <p:inputText id="nombre" style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.nombre}" required="true" requiredMessage="Este campo es requerido" />
                         <p:message style="margin-left: 40%; width: 215px" for="nombre"/>
                         <br/>
 
-                        <h:outputText  styleClass="campo-registro" value="Apellido: "  />
+                        <h:outputText  styleClass="campo-registro" value="#{mensaje.apellido}"  />
                         <p:inputText id="apellido" style="margin-left: 40%"  value="#{registroBean.nuevoUsuario.apellido}" required="true" requiredMessage="Este campo es requerido" />
                         <p:message style="margin-left: 40%; width: 215px" for="apellido"/>
                         <br/>
 
-                        <p:commandButton  style="margin-left: 60%" actionListener="#{registroBean.registrarUsuario}" update="formulario" action="login"  value="Registrar" />
+                        <p:commandButton  style="margin-left: 60%" actionListener="#{registroBean.registrarUsuario}" update="formulario" action="login"  value="#{mensaje.guardar}" />
 
 
                     </h:panelGrid>

@@ -18,6 +18,7 @@ public class Producto implements Serializable {
     private String descripcion;
     private Double precio;
 
+
     public Integer getCantidad() {
         return cantidad;
     }

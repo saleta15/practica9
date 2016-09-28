@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+
+            <div class="ui-g-10">
+                <h:form >
+
+                    <p:fieldset legend="#{mensaje.estadisticas}" style="width: 50%;margin-left: 35%">
+
+                        <p:chart type="pie" model="#{graficosBean.pieModel1}" style="width:400px;height:300px;margin-left: 25%" />
+                        <p:chart type="bar" model="#{graficosBean.barModel}" style="height:300px"/>
+                    </p:fieldset>
+
+
+
+                </h:form>
+            </div>
+        </div>
+
+
+
+    </h:form>
+
+
+
+</h:body>
+</html>

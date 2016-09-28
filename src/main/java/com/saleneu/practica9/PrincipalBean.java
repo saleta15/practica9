@@ -13,13 +13,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @ManagedBean
 @SessionScoped
 public class PrincipalBean {
 
-    private String usuario;
-    private String contrasena;
+    private ArrayList<Producto> carritoCompras = new ArrayList<>();
+
+
     private LazyDataModel<Producto> lazyModel = null;
     @PostConstruct
     public void init(){
@@ -34,6 +36,14 @@ public class PrincipalBean {
         return lazyModel;
     }
 
+    public ArrayList<Producto> getCarritoCompras() {
+        return carritoCompras;
+    }
+
+    public void setCarritoCompras(ArrayList<Producto> carritoCompras) {
+        this.carritoCompras = carritoCompras;
+    }
+
     public Producto getPlayer() {
         if(player == null){
             player = new Producto();
@@ -45,6 +55,8 @@ public class PrincipalBean {
     public void setPlayer(Producto player) {
         this.player = player;
     }
+
+
 
 
 

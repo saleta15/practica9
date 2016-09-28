@@ -73,6 +73,14 @@ public class ProductoServices extends GestionDb<Producto> {
         return lista;
     }
 
+    public int cantidadProducto(Producto p){
+        Query query = getEntityManager().createQuery("select e from Producto e where e = :valor");
+        query.setParameter("valor", p);
+        Producto producto = (Producto)query.getResultList().get(0);
+        return producto.getCantidad();
+
+    }
+
 
 
 

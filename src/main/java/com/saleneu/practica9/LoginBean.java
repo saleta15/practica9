@@ -2,6 +2,7 @@ package com.saleneu.practica9;
 
 import com.saleneu.practica9.entidades.Usuario;
 import com.saleneu.practica9.services.UsuarioServices;
+import com.saleneu.practica9.services.VentaServices;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

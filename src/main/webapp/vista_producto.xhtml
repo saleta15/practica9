@@ -17,7 +17,7 @@
 <h:body>
     <div class="ui-g">
     <div style="margin-left: 25%" class="ui-g-6">
-    <p:panel id="formulario" header="Producto">
+    <p:panel id="formulario" header="#{mensaje.Productos}">
         <p:galleria style="margin-left: 23%" value="#{vistaProductoBean.imagenes}" var="imagen" panelWidth="450" panelHeight="300" showCaption="true">
             <p:graphicImage style="width: 450px; height: 300px;" alt="" value="#{images.image}" title="#{vistaProductoBean.producto.nombre}">
                 <f:param name="id" value="#{imagen.id}" />
@@ -25,19 +25,19 @@
         </p:galleria>
         <p:panelGrid style="margin-left: 22%; width: 50%" columns="2">
             <f:facet name="header">
-                Informacion
+                #{mensaje.informacion}
             </f:facet>
 
-            <h:outputText value="Nombre:" />
+            <h:outputText value="#{mensaje.nombre}" />
             <h:outputText value="#{vistaProductoBean.producto.nombre}" />
 
-            <h:outputText value="Descripcion:" />
+            <h:outputText value="#{mensaje.description}" />
             <h:outputText value="#{vistaProductoBean.producto.descripcion}" />
 
-            <h:outputText value="Precio:" />
+            <h:outputText value="#{mensaje.description}" />
             <h:outputText value="$#{vistaProductoBean.producto.precio}" />
 
-            <h:outputText value="Existencia:" />
+            <h:outputText value="#{mensaje.disponibilidad}" />
             <h:outputText value="#{vistaProductoBean.producto.cantidad}" />
         </p:panelGrid>
     <h:panelGrid >
@@ -49,16 +49,16 @@
     <div class="ui-g">
         <div style="margin-left: 25%" class="ui-g-6">
             <h:form>
-                <p:panel id="formulario2" header="Comentarios">
+                <p:panel id="formulario2" header="#{mensaje.comentario}">
                     <p:fieldset legend="" style="margin-bottom:20px">
                         <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText  value="Valoracion: " /><br/>
+                            <h:outputText  value="#{mensaje.valoracion}" /><br/>
                             <p:rating value="#{vistaProductoBean.comentario.rating}" />
                             <br></br>
-                            <h:outputText  value="Comentario: " /><br/>
+                            <h:outputText  value="#{mensaje.comentario}: " /><br/>
                             <p:inputTextarea id="comentario" rows="4" cols="100" value="#{vistaProductoBean.comentario.mensaje}"/><br/>
                             <p:message for="comentario"/><br/>
-                            <p:commandButton actionListener="#{vistaProductoBean.dejarComentario}" value="Comentar" update="formulario2"/>
+                            <p:commandButton actionListener="#{vistaProductoBean.dejarComentario}" value="#{mensaje.comentar}" update="formulario2"/>
                         </h:panelGrid>
                     </p:fieldset>
                     <ui:repeat value="#{vistaProductoBean.comentarios}" var="comentario">

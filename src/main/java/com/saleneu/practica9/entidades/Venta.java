@@ -16,7 +16,7 @@ public class Venta implements Serializable {
     @OneToOne
     private Usuario usuario;
     private int cantidad;
-    private int precio;
+    private double precio;
     private Date fecha;
 
     public String getFecha() {
@@ -33,11 +33,11 @@ public class Venta implements Serializable {
         this.id = id;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -73,7 +73,7 @@ public class Venta implements Serializable {
     }
 
     public int getTotalVendido() {
-        return totalVendido;
+        return cantidad*(int)precio;
     }
 
     public void setTotalVendido(int totalVendido) {

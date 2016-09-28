@@ -17,17 +17,17 @@
                 <p:panel header="Practica 9">
 
                     <h:panelGrid  columns="1" cellpadding="4">
-                        <h:outputText value="Usuario: " />
+                        <h:outputText value="#{mensaje.usuario} " />
                         <p:inputText value="#{loginBean.usuario}" />
 
-                        <h:outputText value="Contraseña: " />
+                        <h:outputText value="#{mensaje.contrasena}" />
                         <p:password value="#{loginBean.contrasena}" />
                         <p:messages style="font-size: 14px" id="messages" showDetail="true" autoUpdate="true" showIcon="false" closable="true" />
 
-                        <p:commandButton  value="Entrar" actionListener="#{loginBean.login}" />
+                        <p:commandButton  value="#{mensaje.entrar}" actionListener="#{loginBean.login}" />
                     </h:panelGrid>
 
-                    <h:commandLink  action="registro" >Registrarse</h:commandLink>
+                    <h:commandLink value="#{mensaje.registrar}"  action="registro" ></h:commandLink>
                 </p:panel>
             </div>
 

@@ -15,14 +15,17 @@
             <div class="ui-g-2">
                 <p:menu>
                     <p:submenu label="Productos">
-                        <p:menuitem value="Nuevo producto" outcome="producto"   icon="ui-icon-disk" />
+                        <p:menuitem value="#{mensaje.nuevo_producto}" outcome="producto"   icon="ui-icon-disk" />
+                        <p:menuitem value="#{mensaje.carrito}" outcome="carrito_compra"   icon="ui-icon-disk" />
+                        <p:menuitem value="#{mensaje.estadisticas}" outcome="graficos"   icon="ui-icon-disk" />
                     </p:submenu>
 
                 </p:menu>
             </div>
             <div class="ui-g-10">
                 <h:form>
-                    <p:fieldset legend="Productos">
+                    <p:fieldset legend="#{mensaje.Productos}">
+                        <p:growl id="growl2"  showDetail="true" life="3000" />
                         <p:dataTable var="producto" value="#{principalBean.lazyModel}" paginator="true" rows="10"
                                      paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                      rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{principalBean.player}" id="carTable" lazy="true">
@@ -30,18 +33,18 @@
                                 <f:param name="action" value="delete" />
                             </p:ajax>
 
-                            <p:column headerText="Nombre" filterBy="#{producto.nombre}" >
+                            <p:column headerText="#{mensaje.nombre}" filterBy="#{producto.nombre}" >
                                 <h:outputText value="#{producto.nombre}" />
                             </p:column>
-                            <p:column headerText="Precio" >
+                            <p:column headerText="#{mensaje.Precio}" >
                                 <h:outputText value="#{producto.precio}" />
                             </p:column>
-                            <p:column headerText="Disponibilidad" >
+                            <p:column headerText="#{mensaje.disponibilidad}" >
                                 <h:outputText value="#{producto.cantidad}" />
                             </p:column>
-                            <p:column headerText="Otros" >
-                                <p:commandButton ajax="false"  style=" left:70%" value="Comprar" action="#{facturaCompraBean.facturaVentas(producto.id)}"/>
-                               <p:commandButton ajax="false" style=" right:30%" value="Ver Historial" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
+                            <p:column headerText="#{mensaje.otros}" >
+                                <p:commandButton ajax="false"  style=" left:70%" value="#{mensaje.comprar}" action="#{facturaCompraBean.facturaVentas(producto.id)}"/>
+                               <p:commandButton ajax="false" style=" right:20%" value="#{mensaje.ver_historial}" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
                             </p:column>
 
                         </p:dataTable>

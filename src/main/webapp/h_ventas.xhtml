@@ -24,19 +24,19 @@
                         <br></br>
 
                         <p:dataTable var="venta" value="#{historialVentasBean.ventas}">
-                            <p:column headerText="Usuario">
+                            <p:column headerText="#{mensaje.usuario}">
                                 <h:outputText value="#{venta.usuario.nombreUsuario}" />
                             </p:column>
 
-                            <p:column headerText="Fecha venta">
+                            <p:column headerText="#{mensaje.fecha}">
                                 <h:outputText value="#{venta.fecha}" />
                             </p:column>
 
-                            <p:column headerText="Cantidad">
+                            <p:column headerText="#{mensaje.cantidad}">
                                 <h:outputText value="#{venta.cantidad}" />
                             </p:column>
 
-                            <p:column headerText="Total vendido">
+                            <p:column headerText="Total">
                                 <h:outputText value="#{venta.precio * venta.cantidad}" />
                             </p:column>
                         </p:dataTable>

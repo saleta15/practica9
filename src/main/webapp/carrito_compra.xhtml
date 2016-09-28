@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <div class="ui-g">
+
+            <div class="ui-g-10">
+                <h:form >
+
+                    <p:fieldset legend="#{mensaje.carrito}" style="width: 50%;margin-left: 35%">
+
+                    <p:dataTable var="producto" value="#{carritoCompraBean.carritoCompras}"  id="formulario3">
+
+                        <p:column headerText="#{mensaje.Productos}">
+                            <p:growl id="growl"  showDetail="true" life="3000" />
+                            <h:outputText value="#{producto.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="#{mensaje.cantidad}">
+
+                            <h:outputText  value="#{producto.cantidad}" />
+                        </p:column>
+
+                        <p:column headerText="#{mensaje.Precio}">
+                            <h:outputText value="$#{producto.precio}" />
+                        </p:column>
+
+                        <p:column headerText="Sub-total">
+                            <h:outputText value="#{producto.precio*producto.cantidad}" />
+                        </p:column>
+
+                        <p:column headerText="Accion">
+                           <p:commandButton value="Borrar" update="formulario3" actionListener="#{carritoCompraBean.borrarDeCarrito(producto)}"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+                        <p:outputLabel value="Total: $#{carritoCompraBean.totalCarrito}"/>
+                        <br/>
+                        <p:commandButton update="formulario3" value="Checkout" style="margin-left: 42%" action="#{carritoCompraBean.comprarProductos}"/>
+                    </p:fieldset>
+
+
+
+                </h:form>
+            </div>
+        </div>
+
+
+
+    </h:form>
+
+
+
+</h:body>
+</html>

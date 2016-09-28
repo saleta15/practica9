@@ -38,5 +38,23 @@ public class VentaServices extends GestionDb<Venta> {
        return lista;
     }
 
+    public List<Object[]> totalesVentas(){
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select e.producto.nombre,sum(e.cantidad*e.precio) from Venta e group by e.producto");
+
+        List<Object[]> lista = query.getResultList();
+        return lista;
+
+    }
+
+    public List<Object[]> ventasPorDia(){
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select e.fecha,sum(e.cantidad*e.precio) from Venta e group by e.fecha");
+
+        List<Object[]> lista = query.getResultList();
+        return lista;
+
+    }
+
 
 }
