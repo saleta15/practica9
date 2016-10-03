@@ -40,7 +40,7 @@ public class VentaServices extends GestionDb<Venta> {
 
     public List<Object[]> totalesVentas(){
         EntityManager em = getEntityManager();
-        Query query = em.createQuery("select e.producto.nombre,sum(e.cantidad*e.precio) from Venta e group by e.producto");
+        Query query = em.createQuery("select e.producto.nombre,sum(e.cantidad) from Venta e group by e.producto");
 
         List<Object[]> lista = query.getResultList();
         return lista;

@@ -7,7 +7,7 @@
         web component -->
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>trontastic </param-value>
+        <param-value>trontastic</param-value>
     </context-param>
 
 

@@ -13,11 +13,18 @@
 
     <h:form>
         <div class="ui-g">
+            <div class="ui-g-2">
+                <p:menu>
+                    <p:submenu label="Productos">
+                        <p:menuitem value="Principal" outcome="principal"   icon="ui-icon-disk" />
+                    </p:submenu>
 
+                </p:menu>
+            </div>
             <div class="ui-g-10">
                 <h:form >
 
-                    <p:fieldset legend="#{mensaje.carrito}" style="width: 50%;margin-left: 35%">
+                    <p:fieldset legend="#{mensaje.carrito}" style="width: 50%;margin-left: 10%">
 
                     <p:dataTable var="producto" value="#{carritoCompraBean.carritoCompras}"  id="formulario3">
 

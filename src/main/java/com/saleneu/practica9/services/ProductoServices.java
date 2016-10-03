@@ -30,11 +30,11 @@ public class ProductoServices extends GestionDb<Producto> {
     public  List<Producto> paginarProductos(int pageNumber, int pageSize, String filtro){
         Query query;
         if(!filtro.equals("")){
-            query = getEntityManager().createQuery("select e from Producto e where e.nombre like :filtro");
+            query = getEntityManager().createQuery("select e from Producto e where e.nombre like :filtro order by e.id desc ");
             query.setParameter("filtro", "%"+filtro+"%");
         }
         else{
-            query = getEntityManager().createQuery("from Producto");
+            query = getEntityManager().createQuery("select e from Producto e order by e.id desc ");
         }
 
         query.setFirstResult(pageNumber);

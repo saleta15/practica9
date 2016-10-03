@@ -29,6 +29,7 @@ public class VistaProductoBean {
     private ArrayList<Imagen> imagenes;
     private ArrayList<Comentario> comentarios;
     private Comentario comentario = new Comentario();
+    private boolean admin;
 
     public Comentario getComentario() {
         if(comentario ==null){
@@ -36,6 +37,13 @@ public class VistaProductoBean {
             comentario.setRating(2);
         }
         return comentario;
+    }
+
+    public boolean isAdmin() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+        Usuario usuario = (Usuario)session.getAttribute("usuario");
+        return usuario.getEsAdmin();
     }
 
     public void setComentario(Comentario comentario) {

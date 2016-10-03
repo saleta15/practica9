@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class PrincipalBean {
 
     private ArrayList<Producto> carritoCompras = new ArrayList<>();
-
+    private boolean admin;
 
     private LazyDataModel<Producto> lazyModel = null;
     @PostConstruct
@@ -28,6 +29,16 @@ public class PrincipalBean {
         lazyModel = new ProductoLazyList();
     }
 
+    public boolean isAdmin() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+        Usuario usuario = (Usuario)session.getAttribute("usuario");
+        return usuario.getEsAdmin();
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
     private Producto player;
 

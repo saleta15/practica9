@@ -16,8 +16,20 @@
 
 <h:body>
     <div class="ui-g">
-    <div style="margin-left: 25%" class="ui-g-6">
+        <div class="ui-g-2">
+            <p:menu>
+                <p:submenu label="Productos">
+                    <p:menuitem value="Principal" outcome="principal"   icon="ui-icon-disk" />
+                </p:submenu>
+
+            </p:menu>
+        </div>
+    <div style="margin-left: 5%" class="ui-g-6">
     <p:panel id="formulario" header="#{mensaje.Productos}">
+        <h:form>
+            <p:commandButton rendered="#{vistaProductoBean.admin}" ajax="false"   value="#{mensaje.editar}" action="#{editarProductoBean.inicializar(vistaProductoBean.producto)}"/>
+            <p:commandButton ajax="false"   value="#{mensaje.comprar}" action="#{facturaCompraBean.facturaVentas(vistaProductoBean.producto.id)}"/>
+        </h:form>
         <p:galleria style="margin-left: 23%" value="#{vistaProductoBean.imagenes}" var="imagen" panelWidth="450" panelHeight="300" showCaption="true">
             <p:graphicImage style="width: 450px; height: 300px;" alt="" value="#{images.image}" title="#{vistaProductoBean.producto.nombre}">
                 <f:param name="id" value="#{imagen.id}" />
@@ -34,11 +46,13 @@
             <h:outputText value="#{mensaje.description}" />
             <h:outputText value="#{vistaProductoBean.producto.descripcion}" />
 
-            <h:outputText value="#{mensaje.description}" />
+            <h:outputText value="#{mensaje.Precio}" />
             <h:outputText value="$#{vistaProductoBean.producto.precio}" />
 
             <h:outputText value="#{mensaje.disponibilidad}" />
             <h:outputText value="#{vistaProductoBean.producto.cantidad}" />
+
+
         </p:panelGrid>
     <h:panelGrid >
             </h:panelGrid>
@@ -47,7 +61,7 @@
     </div>
 
     <div class="ui-g">
-        <div style="margin-left: 25%" class="ui-g-6">
+        <div style="margin-left: 21.5%" class="ui-g-6">
             <h:form>
                 <p:panel id="formulario2" header="#{mensaje.comentario}">
                     <p:fieldset legend="" style="margin-bottom:20px">
@@ -64,7 +78,7 @@
                     <ui:repeat value="#{vistaProductoBean.comentarios}" var="comentario">
                         <p:fieldset legend="#{comentario.usuario.nombre}" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="5">
-                                <p:rating value="#{comentario.rating}" />
+                                <p:rating value="#{comentario.rating}"  readonly="true"/>
                                 <h:outputText
                                         value="#{comentario.mensaje}" />
                             </h:panelGrid>

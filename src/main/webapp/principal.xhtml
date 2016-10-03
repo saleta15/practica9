@@ -17,7 +17,7 @@
                     <p:submenu label="Productos">
                         <p:menuitem value="#{mensaje.nuevo_producto}" outcome="producto"   icon="ui-icon-disk" />
                         <p:menuitem value="#{mensaje.carrito}" outcome="carrito_compra"   icon="ui-icon-disk" />
-                        <p:menuitem value="#{mensaje.estadisticas}" outcome="graficos"   icon="ui-icon-disk" />
+                        <p:menuitem rendered="#{principalBean.admin}" value="#{mensaje.estadisticas}" outcome="graficos"   icon="ui-icon-disk" />
                     </p:submenu>
 
                 </p:menu>
@@ -44,8 +44,9 @@
                             </p:column>
                             <p:column headerText="#{mensaje.otros}" >
                                 <p:commandButton ajax="false"  style=" left:70%" value="#{mensaje.comprar}" action="#{facturaCompraBean.facturaVentas(producto.id)}"/>
-                               <p:commandButton ajax="false" style=" right:20%" value="#{mensaje.ver_historial}" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
+                               <p:commandButton rendered="#{principalBean.admin}" ajax="false" style=" right:20%" value="#{mensaje.ver_historial}" action="#{historialVentasBean.cargarVentas(producto.id)}"/>
                             </p:column>
+
 
                         </p:dataTable>
 

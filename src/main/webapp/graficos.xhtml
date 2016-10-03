@@ -13,11 +13,18 @@
 
     <h:form>
         <div class="ui-g">
+            <div class="ui-g-2">
+                <p:menu>
+                    <p:submenu label="Productos">
+                        <p:menuitem value="Principal" outcome="principal"   icon="ui-icon-disk" />
+                    </p:submenu>
 
+                </p:menu>
+            </div>
             <div class="ui-g-10">
                 <h:form >
 
-                    <p:fieldset legend="#{mensaje.estadisticas}" style="width: 50%;margin-left: 35%">
+                    <p:fieldset legend="#{mensaje.estadisticas}" style="width: 50%;margin-left: 10%">
 
                         <p:chart type="pie" model="#{graficosBean.pieModel1}" style="width:400px;height:300px;margin-left: 25%" />
                         <p:chart type="bar" model="#{graficosBean.barModel}" style="height:300px"/>

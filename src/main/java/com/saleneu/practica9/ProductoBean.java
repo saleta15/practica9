@@ -52,11 +52,7 @@ public class ProductoBean {
 
     }
 
-//    <p:fieldset legend="Image from resources">
-//                            <p:graphicImage value="#{images.image}">
-//                                <f:param name="id" value="4" />
-//                            </p:graphicImage>
-//                        </p:fieldset>
+
 
     public void handleFileUpload(FileUploadEvent event) throws IOException {
 

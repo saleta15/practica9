@@ -22,32 +22,30 @@
                     <h:panelGrid >
 
                         <h:outputText  value="#{mensaje.nombre} " />
-                        <p:inputText id="nombre" style="width: 371px"   value="#{productoBean.nuevoProducto.nombre}" required="true" requiredMessage="Es requerido." />
+                        <p:inputText id="nombre" style="width: 371px"   value="#{editarProductoBean.nuevoProducto.nombre}" required="true" requiredMessage="Es requerido." />
                         <p:message for="nombre"/>
                         <br/>
 
 
                         <h:outputText  value="#{mensaje.description} " />
-                        <p:inputText id="descripcion"  style="width: 371px" value="#{productoBean.nuevoProducto.descripcion}" required="true" requiredMessage="Es requerido." />
+                        <p:inputText id="descripcion"  style="width: 371px" value="#{editarProductoBean.nuevoProducto.descripcion}" required="true" requiredMessage="Es requerido." />
                         <p:message for="descripcion"/>
                         <br/>
 
                         <h:outputText  value="#{mensaje.Precio}" />
-                        <p:inputNumber   id="precio" value="#{productoBean.nuevoProducto.precio}" required="true" requiredMessage="Es requerido."/>
+                        <p:inputNumber   id="precio" value="#{editarProductoBean.nuevoProducto.precio}" required="true" requiredMessage="Es requerido."/>
                         <p:message for="precio"/>
                         <br/>
 
                         <h:outputText  value="#{mensaje.disponibilidad} " />
-                        <p:spinner  id="cantidad"  value="#{productoBean.nuevoProducto.cantidad}" required="true" requiredMessage="Es requerido." />
+                        <p:spinner  id="cantidad"  value="#{editarProductoBean.nuevoProducto.cantidad}" required="true" requiredMessage="Es requerido." />
                         <p:message for="cantidad"/>
 
-                        <h:outputText  value="#{mensaje.fotos}" />
-                        <p:fileUpload fileUploadListener="#{productoBean.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                      multiple="true"  sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
 
 
                         <br></br>
-                        <p:commandButton   style="margin-left: 450px"  actionListener="#{productoBean.registrarProducto}" action="principal"  value="#{mensaje.guardar}" update="formulario" />
+                        <p:commandButton   style="margin-left: 450px"  actionListener="#{editarProductoBean.editarProducto}" action="principal"  value="#{mensaje.guardar}" update="formulario" />
 
 
                     </h:panelGrid>

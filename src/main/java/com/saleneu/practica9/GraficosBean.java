@@ -71,7 +71,7 @@ public class GraficosBean {
         List<Object[]> datos = VentaServices.getInstancia().totalesVentas();
 
         for(Object[] o: datos){
-            pieModel1.set(o[0].toString(),(double)o[1]);
+            pieModel1.set(o[0].toString(),(long)o[1]);
         }
 
         pieModel1.setTitle("Productos más vendidos");
